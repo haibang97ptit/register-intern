@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Đăng kí</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/intern.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,400i|Noto+Sans:400,400i,700" rel="stylesheet">
+
+</head>
+<body>
+@if(session()->get('success'))
+    <div class="alert alert-success abc">
+        {{ session()->get('success') }}
+    </div>
+@endif
+@if(session('fail'))
+    <div class="alert alert-danger abc" role="alert">
+        {{ session('fail') }}
+    </div>
+@endif
+<div id="highlighted" class="hidden-xs">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
+                <h1 style="margin-left: 270px">Đăng kí thực tập</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="content" class="interior-page">
+    <div class="container-fluid">
+        <div class="row" >
+            <!--Sidebar-->
+            <div class="col-sm-3 col-md-3 col-lg-2 sidebar interior-page-nav hidden-xs" style="margin-top: -50px">
+                <div class="dynamicDiv panel-group" id="dd.0.1.0">
+                    <div id="subMenu" class="panel panel-default">
+                        <ul class="subMenuHighlight panel-heading">
+                            <li class="subMenuHighlight panel-title" id="subMenuHighlight">
+                                <a class="subMenuHighlight" href=""><span class="subMenuHighlight">Nhập thông tin</span></a>
+                            </li>
+                        </ul>
+                        <ul class="panel-heading">
+                            <li class="panel-title">
+                                <a class="subMenu1" href=""><span>Liên hệ</span></a>
+                            </li>
+                        </ul>
+                        <ul class="panel-heading">
+                            <li class="panel-title">
+                                <a class="subMenu1" href="" ><span>Dịch vụ</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="item item-nopad item-noborder item-gold">
+                        <a style="padding: 5% 0px;" href="" class="btn btn-primary btn-block" role="button">LEARN MORE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="container">
+    <div class="content-area-right" style="margin-top: -110px; margin-left: 200px;
+    margin-right: -35px;">
+        <div class="content-crumb-div">
+            <a href="">Home</a> | <a href="">Your Account</a> | Create An Account
+        </div>
+        <p>Nếu bạn không tự tin hãy <code><a href="#" style="color: deeppink">bấm vào đây</a></code> để đăng kí khóa học nền tảng của trung tâm</p>
+                <form  class="was-validated" name="contentForm" action="{{ route('internship.add') }}"
+                      method="POST" enctype="multipart/form-data">
+                    @csrf
+                       <div class="row">
+                           <div class="col-md-4">
+                               <label for="uname">Họ tên:</label>
+                               <input type="text" class="form-control" id="uname" placeholder="Nhập họ tên" name="name" required>
+                               <div class="valid-feedback">Tên khả dụng</div>
+                               <div class="invalid-feedback">Họ tên bắt buộc</div>
+                           </div>
+                           <div class="col-md-4">
+                               <label for="uname1">Email:</label>
+                               <input type="text" class="form-control" id="uname1" placeholder="Nhập email" name="email" required>
+                               <div class="valid-feedback">Ok !</div>
+                               <div class="invalid-feedback">Email bắt buộc</div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col-md-4">
+                               <label for="uname2">Số CMND:</label>
+                               <input type="text" class="form-control" id="uname2" placeholder="Tối đa 9 kí tự" name="cmnd" maxlength="9" required>
+                               <div class="valid-feedback">Ok !</div>
+                               <div class="invalid-feedback">Số cmnd bắt buộc</div>
+                           </div>
+                           <div class="col-md-4">
+                               <label for="uname3">Ngày cấp:</label>
+                               <input type="datetime-local" class="form-control" id="uname3" placeholder="" name="cmndday" required>
+                               <div class="valid-feedback">Ok !</div>
+                               <div class="invalid-feedback">Ngày cấp bắt buộc</div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col-md-4">
+                               <label for="uname4">Nơi cấp:</label>
+                               <input type="text" class="form-control" id="uname4" placeholder="Nhập nơi cấp cmnd" name="cmndplace" required>
+                               <div class="valid-feedback">Ok !</div>
+                               <div class="invalid-feedback">Nơi cấp bắt buộc </div>
+                           </div>
+                           <div class="col-md-4">
+                               <label for="uname5">Tên trường:</label>
+                               <input type="text" class="form-control" id="uname5" placeholder="Nhập tên trường" name="university" required>
+                               <div class="valid-feedback">Ok !</div>
+                               <div class="invalid-feedback">Tên trường bắt buộc</div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col-md-4">
+                               <label for="uname6">Trình độ:</label>
+                               <select class="form-control" id="uname6" name="level" required>
+                                   <option hidden></option>
+                                   <option >Đại học</option>
+                                   <option >Cao đẳng</option>
+                               </select>
+                               <div class="valid-feedback">Ok !</div>
+                               <div class="invalid-feedback">Trình độ bắt buộc </div>
+                           </div>
+                           <div class="col-md-4">
+                               <label for="uname7">Ảnh 3x4:</label>
+                               <input type="file" class="form-control" id="uname7" placeholder="Enter password" name="image" required>
+                               <div class="valid-feedback">Ok !</div>
+                               <div class="invalid-feedback">Ảnh bắt buộc</div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col-md-4">
+                               <label for="uname8">Số điện thoại:</label>
+                               <input type="text" class="form-control" id="uname8"
+                                      pattern="^[_A-z0-9]{1,}$" maxlength="9" placeholder="Nhập SDT" name="phone" required>
+                               <div class="valid-feedback">Ok !</div>
+                               <div class="invalid-feedback">SDT bắt buộc </div>
+                           </div>
+                           <div class="col-md-4">
+                               <label for="uname9">Đề tài:</label>
+                               <select class="form-control" id="exampleInputPassword10" name="topic_id" required>
+                                   <option hidden></option>
+                                   @foreach ($top as $topics)
+                                       <option value="{{$topics->id}}">{{$topics->name}}</option>
+                                   @endforeach
+                               </select>
+                               <div class="valid-feedback">Chúc bạn hoàn thành tốt</div>
+                               <div class="invalid-feedback">Không có đề tài thì làm sao thực tập?</div>
+                           </div>
+                       </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="uname10">Loại thực tập:</label>
+                            <select class="form-control" id="uname10" name="type" required>
+                                <option hidden></option>
+                                <option id="yes">Nâng cao kiến thức</option>
+                                <option id="no">Thực tập doanh nghiệp</option>
+                            </select>
+                            <div class="valid-feedback">Ok !</div>
+                            <div class="invalid-feedback">Chọn 1 trong 2 loại</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="uname11">Thời gian:</label>
+                            <select class="form-control" id="uname11" name="total_time" required>
+                                <option hidden></option>
+                                <option id="yes">1 Tháng</option>
+                                <option id="yes">2 Tháng</option>
+                                <option id="yes">3 Tháng</option>
+                                <option id="yes">4 Tháng</option>
+                                <option id="yes">5 Tháng</option>
+                                <option id="yes">6 Tháng</option>
+                                <option id="yes">7 Tháng</option>
+                                <option id="yes">8 Tháng</option>
+                                <option id="yes">9 Tháng</option>
+                                <option id="yes">10 Tháng</option>
+                                <option id="yes">11 Tháng</option>
+                                <option id="yes">12 Tháng</option>
+                            </select>
+                            <div class="valid-feedback">Ok !</div>
+                            <div class="invalid-feedback">Thời gian bắt buộc</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="uname12">Bắt đầu:</label>
+                            <input type="datetime-local" class="form-control" id="uname12" placeholder="" name="start_time"  required>
+                            <div class="valid-feedback">Ok !</div>
+                            <div class="invalid-feedback">Bắt buộc</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="uname13">Kết thúc:</label>
+                            <input type="datetime-local" class="form-control" id="uname13" placeholder="" name="end_time" required>
+                            <div class="valid-feedback">Ok !</div>
+                            <div class="invalid-feedback">Bắt buộc</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="uname14">Địa chỉ:</label>
+                            <input type="text" class="form-control" id="uname14" placeholder="Nhập địa chỉ" name="address"  required>
+                            <div class="valid-feedback">Ok !</div>
+                            <div class="invalid-feedback">Bắt buộc</div>
+                        </div>
+                        <div class="col-md-4" style="margin-top: 20px; margin-left: 20px; margin-bottom: 20px">
+                            <label for="subscribeNews">Bạn đã từng thực tập chưa?</label>
+                            <span><br></span>
+                            <input type="radio" id="subscribeNews" name="subscribe" value="newsletter">
+                            <label for="subscribeNews" style="color: green; margin-left: 5px">Rồi</label>
+                            <input type="radio" style="margin-left: 55px" id="subscribeNews" name="subscribe" value="newsletter">
+                            <label for="subscribeNews" style="color: red; margin-left: 5px">Chưa</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 200px; margin-left: 190px">Submit</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
